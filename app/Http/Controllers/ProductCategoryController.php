@@ -12,8 +12,9 @@ class ProductCategoryController extends Controller
         return view('dashboard.product-category');
     }
 
+
     public function store(Request $request)
-    {     dd($request->all());
+    {     
             $request->validate([
                 'name'           => 'required',
             ]);

@@ -19,7 +19,7 @@
                 <div class="card-body">
 
                 <div class="alert alert-success d-none">
-                  <strong>Success!</strong> Indicates a successful or positive action.
+                  <strong>Success!</strong>  Successful .
                 </div>
                   <h4 class="card-title">Category Add</h4>
                   <form class="forms-sample"  id="form" >
@@ -34,12 +34,6 @@
                     <button id="product" type="submit" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
-                  <!-- @if(Session::has('message'))
-    <div class="alert alert-{{ Session::get('message-type') }} alert-dismissable">
-        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-        <i class="glyphicon glyphicon-{{ Session::get('message-type') == 'success' ? 'ok' : 'remove'}}"></i> {{ Session::get('message') }}
-    </div>
-@endif -->
                 </div>
               </div>
             </div>

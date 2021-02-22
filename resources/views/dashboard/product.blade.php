@@ -14,41 +14,64 @@
           <div class="row">
            
            
-            <div class="col-12 grid-margin stretch-card">
+            <div class="col-12 grid-margin stretch-card"> 
               <div class="card">
                 <div class="card-body">
+
+             
                   <h4 class="card-title">Product Add</h4>
-                  <form class="forms-sample">
+               
+
+                  <form action="{{ route('product.store') }}" enctype="multipart/form-data" method="POST" >
+                  @csrf
+             
+                 @if(Session::has('message'))
+          <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+               @endif
+
+
                     <div class="form-group">
                       <label for="exampleInputName1">Title</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="title">
                     </div>
                     
                     
                     <div class="form-group">
                       <label for="exampleSelectGender">Category</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>Male</option>
-                          <option>Female</option>
+                        <select class="form-control" id="exampleSelectGender"  name="category_id">
+                        @if(!empty($category))
+                    @foreach($category as $categories)
+                          <option value="{{$categories->id}}">{{$categories->name}}</option>
+                          @endforeach
+                   @endif
                         </select>
                       </div>
-                   
-                      <div>Image</div>
-                  <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customInput" required>
-                    <label class="custom-file-label" for="customInput">Choose file...</label>
-                       </div>
+                  
+                      <div class="form-group">
+                      <label for="exampleSelectGender">Status</label>
+                        <select class="form-control" id="exampleSelectGender"  name="status">
+                       
+                          <option value="0">Active</option>
+                          <option value="1">InActive</option>
+                        
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                    <label>Image:</label>
+            <input type="file" name="image" class="form-control">
+              </div>
                   
                     <div class="form-group">
                       <label for="exampleInputCity1">Price</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Price">
+                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Price" name="price">
                     </div>
                     
                    <div class="form-group">
                         <label for="ckeditor">Example textarea</label>
                       <textarea class="form-control" id="ckeditor" name="description" rows="4"></textarea>
                        </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" >Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -76,6 +99,32 @@
   <script>
   CKEDITOR.replace( 'description' );
      </script>
+
+
+
+
+<!-- <script type="text/javascript">
+$("#form").submit(function(e)
+{
+  $('.alert').removeClass('d-none');
+     $('#form').trigger("reset");
+}
+</script>
+
+
+
+// $("#productadd").submit(function(e) {
+//             success: function(data)
+//             {
+//               $('.alert').removeClass('d-none');
+//               $('#form').trigger("reset"); // show response from the php script.
+//             }
+ 
+
+
+
+
+  </script> -->
 </body>
 
 
