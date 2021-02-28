@@ -294,7 +294,7 @@
             {data: 'title', name: 'title'},
             {data: 'status', name: 'status'},
             {data: 'price', name: 'price'},
-            {data: 'category_id', name: 'category_id'},
+            {data: 'categoryname', name: 'categoryname'},
             {data: 'description', name: 'description'},
             {data: 'created_at', name: 'created_at'},
         ]

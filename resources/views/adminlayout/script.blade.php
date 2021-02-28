@@ -27,7 +27,7 @@
   <!-- inject:js -->
   <script src="{{asset('../../js/off-canvas.js')}}"></script>
   <script src="{{asset('../../js/hoverable-collapse.js')}}"></script>
-  <script src="{{asset('../../js/template.js')}}"></script>
+  <script src="{{asset('../../js/template.js')}}"></script>s
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('../../js/chart.js')}}"></script>
