@@ -1,4 +1,12 @@
 @include('adminlayout.head')
+
+<head>
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -234,83 +242,17 @@
                 <div class="card-body">
                   <p class="card-title">Recent Purchases</p>
                   <div class="table-responsive">
-                    <table id="recent-purchases-listing" class="table">
+                    <table class="table" id="datatable">
                       <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Status report</th>
-                            <th>Office</th>
+                            <th>Status</th>
                             <th>Price</th>
+                            <th>Category</th>
+                            <th>Description</th>
                             <th>Date</th>
-                            <th>Gross amount</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                            <td>Jeremy Ortega</td>
-                            <td>Levelled up</td>
-                            <td>Catalinaborough</td>
-                            <td>$790</td>
-                            <td>06 Jan 2018</td>
-                            <td>$2274253</td>
-                        </tr>
-                        <tr>
-                            <td>Alvin Fisher</td>
-                            <td>Ui design completed</td>
-                            <td>East Mayra</td>
-                            <td>$23230</td>
-                            <td>18 Jul 2018</td>
-                            <td>$83127</td>
-                        </tr>
-                        <tr>
-                            <td>Emily Cunningham</td>
-                            <td>support</td>
-                            <td>Makennaton</td>
-                            <td>$939</td>
-                            <td>16 Jul 2018</td>
-                            <td>$29177</td>
-                        </tr>
-                        <tr>
-                            <td>Minnie Farmer</td>
-                            <td>support</td>
-                            <td>Agustinaborough</td>
-                            <td>$30</td>
-                            <td>30 Apr 2018</td>
-                            <td>$44617</td>
-                        </tr>
-                        <tr>
-                            <td>Betty Hunt</td>
-                            <td>Ui design not completed</td>
-                            <td>Lake Sandrafort</td>
-                            <td>$571</td>
-                            <td>25 Jun 2018</td>
-                            <td>$78952</td>
-                        </tr>
-                        <tr>
-                            <td>Myrtie Lambert</td>
-                            <td>Ui design completed</td>
-                            <td>Cassinbury</td>
-                            <td>$36</td>
-                            <td>05 Nov 2018</td>
-                            <td>$36422</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob Kennedy</td>
-                            <td>New project</td>
-                            <td>Cletaborough</td>
-                            <td>$314</td>
-                            <td>12 Jul 2018</td>
-                            <td>$34167</td>
-                        </tr>
-                        <tr>
-                            <td>Ernest Wade</td>
-                            <td>Levelled up</td>
-                            <td>West Fidelmouth</td>
-                            <td>$484</td>
-                            <td>08 Sep 2018</td>
-                            <td>$50862</td>
-                        </tr>
-                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -332,6 +274,34 @@
   <!-- plugins:js -->
   @include('adminlayout.script')
   <!-- End custom js for this page-->
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+    var table = $('#datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('dashboard.index') }}",
+        columns: [
+            {data: 'title', name: 'title'},
+            {data: 'status', name: 'status'},
+            {data: 'price', name: 'price'},
+            {data: 'category_id', name: 'category_id'},
+            {data: 'description', name: 'description'},
+            {data: 'created_at', name: 'created_at'},
+        ]
+    });
+  });
+  
+</script>
 </body>
 
 </html>
