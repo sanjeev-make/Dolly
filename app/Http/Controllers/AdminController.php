@@ -63,11 +63,15 @@ class AdminController extends Controller
                  date('d-m-Y', strtotime($data->created_at)); 
                 })                
 
-                // ->addColumn('action', function($row){
-                //     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                //     return $actionBtn;
-                // })
-                ->rawColumns(['description'])
+                ->addColumn('action', function($data){
+       
+                    // $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">View</a>';
+                    // $btn = $btn.'<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm" data-action="'. route('product.destroy',$data->id) .'" onclick="deleteConfirmation('.$data->id.')">Delete</a>';
+  
+                     return $btn;
+             })
+                ->rawColumns(['description','action'])
                 ->make(true);
         }
 

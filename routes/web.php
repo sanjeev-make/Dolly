@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('/table', 'App\Http\Controllers\TableController@table')->name('table');
     Route::get('/product/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
     Route::post('/product/store', 'App\Http\Controllers\ProductController@store')->name('product.store');
+    Route::get('/destroy/{id?}', 'App\Http\Controllers\ProductController@destroy')->name('product.destroy');
+
 
     Route::get('/productcategory/create', 'App\Http\Controllers\ProductCategoryController@create')->name('productcategory');
     Route::post('/productcategory/store', 'App\Http\Controllers\ProductCategoryController@store')->name('store.category');

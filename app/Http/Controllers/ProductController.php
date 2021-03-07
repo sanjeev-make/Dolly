@@ -75,4 +75,18 @@ class ProductController extends Controller
         
         } 
 
+        public function destroy($id)
+      {
+          
+       $delete_website_type =   Product::find($id)->delete();
+        $delete_website_type = ProductCategory::find($id)->delete();
+         if(delete_website_type) {
+            $message = 'success';
+         }else {
+             $message = 'fail';
+         }
+          return json_encode($message);
+         
+      }
+
 }
