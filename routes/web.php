@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::post('/productcategory/store', 'App\Http\Controllers\ProductCategoryController@store')->name('store.category');
 
 });
+Route::get('/send-email', 'App\Http\Controllers\MailController@sendEmail');
