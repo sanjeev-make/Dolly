@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\FrontendController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +17,15 @@ use App\Http\Controllers\MailController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', '\App\Http\Controllers\FrontendController@welcome');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'authenticate'])->name('home');
-
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -40,3 +43,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 
 });
 Route::get('/send-email', 'App\Http\Controllers\MailController@sendEmail');
+Route::get('/book_detail_page/{id?}', '\App\Http\Controllers\FrontendController@detail')->name('book.detail');
+Route::get('/book_category', '\App\Http\Controllers\FrontendController@category');
+
+

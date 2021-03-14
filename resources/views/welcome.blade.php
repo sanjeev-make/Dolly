@@ -82,20 +82,23 @@
                         </div> 
                         <div class="iq-card-body">  
                            <div class="row">
+
+                           @if(!empty($products))
+                           @foreach($products as $product)
                               <div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
                                     <div class="iq-card-body p-0">
                                        <div class="d-flex align-items-center">
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/01.jpg')}}" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{url('/images/' .$product->image)}}" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="{{route('book.detail',$product->id)}}" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
-                                                <h6 class="mb-1">Reading on the World</h6>
-                                                <p class="font-size-13 line-height mb-1">Jhone Steben</p>
+                                                <h6 class="mb-1">{{$product->title}}</h6>
+                                                <p class="font-size-13 line-height mb-1">{{$product->category_name}}</p>
                                                 <div class="d-block line-height">
                                                    <span class="font-size-11 text-warning">
                                                       <i class="fa fa-star"></i>
@@ -107,8 +110,8 @@
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$100</span>
-                                                <h6><b>$89</b></h6>
+                                                <!-- <span class="pr-1 old-price">$100</span> -->
+                                                <h6><b>${{$product->price}}</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
@@ -119,411 +122,10 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/02.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Catcher in the Rye</h6>
-                                                <p class="font-size-13 line-height mb-1">Fritz Wold</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>$99</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/03.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Little Black Book</h6>
-                                                <p class="font-size-13 line-height mb-1">John Klok</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$150</span>
-                                                <h6><b>$129</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/04.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Take On The Risk</h6>
-                                                <p class="font-size-13 line-height mb-1">George Strong</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$120</span>
-                                                <h6><b>$100</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/05.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Absteact On Background</h6>
-                                                <p class="font-size-13 line-height mb-1">Ichae Semos</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$105</span>
-                                                <h6><b>$99</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/06.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Find The Wave Book</h6>
-                                                <p class="font-size-13 line-height mb-1">Fidel Martin</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$110</span>
-                                                <h6><b>$100</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/07.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">See the More Story</h6>
-                                                <p class="font-size-13 line-height mb-1">Jules Boutin</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$89</span>
-                                                <h6><b>$79</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/08.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Wikde Book</h6>
-                                                <p class="font-size-13 line-height mb-1">Kusti Franti</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
-                                                <h6><b>$89</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/09.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Conversion Erik Routley</h6>
-                                                <p class="font-size-13 line-height mb-1">Argele Intili</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$100</span>
-                                                <h6><b>$79</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/10.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Leo Dominica</h6>
-                                                <p class="font-size-13 line-height mb-1">Henry Jurk</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$120</span>
-                                                <h6><b>$99</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-sm-0 mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/11.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">By The Editbeth Jat</h6>
-                                                <p class="font-size-13 line-height mb-1">David King</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>$149</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-0 mb-sm-0 mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/browse-books/12.jpg')}}" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Crucial Decade</h6>
-                                                <p class="font-size-13 line-height mb-1">Attilio Marzi</p>
-                                                <div class="d-block line-height">
-                                                   <span class="font-size-11 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>                                             
-                                                </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
-                                                <h6><b>$89</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
+                             @endforeach
+                             @endif
+                             
+
                            </div>
                         </div>
                      </div>
@@ -598,7 +200,7 @@
                            <ul class="list-inline row mb-0 align-items-center iq-scrollable-block">
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/01.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/01.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Brandon Guidelines</h6>
@@ -607,7 +209,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/02.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/02.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Hugh Millie-Yate</h6>
@@ -616,7 +218,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/03.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/03.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Nathaneal Down</h6>
@@ -625,7 +227,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/04.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/04.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Thomas R. Toe</h6>
@@ -634,7 +236,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/05.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/05.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Druid Wensleydale</h6>
@@ -643,7 +245,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/06.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/06.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Natalya Undgrowth</h6>
@@ -652,7 +254,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/07.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/07.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Desmond Eagle</h6>
@@ -661,7 +263,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/08.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/08.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Lurch Schpellchek</h6>
@@ -670,7 +272,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/09.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/09.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Natalya Undgrowth</h6>
@@ -679,7 +281,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/10.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/10.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Natalya Undgrowth</h6>
@@ -688,7 +290,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/11.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/11.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Natalya Undgrowth</h6>
@@ -697,7 +299,7 @@
                               </li>
                               <li class="col-sm-6 d-flex mb-3 align-items-center">
                                  <div class="icon iq-icon-box mr-3">
-                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="images/user/01.jpg" alt=""></a>
+                                    <a href="javascript:void();"><img class="img-fluid avatar-60 rounded-circle" src="{{asset('assets/images/user/01.jpg')}}" alt=""></a>
                                  </div>
                                  <div class="mt-1">
                                     <h6>Natalya Undgrowth</h6>
@@ -724,7 +326,7 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/01.jpg" class="img-fluid rounded w-100" alt="">
+                                          <img src="{{asset('assets/images/favorite/01.jpg')}}" class="img-fluid rounded w-100" alt="">
                                        </a>                                
                                     </div>
                                     <div class="col-7">
@@ -747,7 +349,7 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/02.jpg" class="img-fluid rounded w-100" alt="">
+                                          <img src="{{asset('assets/images/favorite/02.jpg')}}" class="img-fluid rounded w-100" alt="">
                                        </a>                                
                                     </div>
                                     <div class="col-7">
@@ -770,7 +372,7 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/03.jpg" class="img-fluid rounded w-100" alt="">
+                                          <img src="{{asset('assets/images/favorite/03.jpg')}}" class="img-fluid rounded w-100" alt="">
                                        </a>                                
                                     </div>
                                     <div class="col-7">
@@ -793,7 +395,7 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/04.jpg" class="img-fluid rounded w-100" alt="">
+                                          <img src="{{asset('assets/images/favorite/04.jpg')}}" class="img-fluid rounded w-100" alt="">
                                        </a>                                
                                     </div>
                                     <div class="col-7">
