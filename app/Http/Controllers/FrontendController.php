@@ -15,7 +15,17 @@ public function welcome()
     ->leftJoin('product_categories','products.category_id','=','product_categories.id')
     ->get();
 
-    return view('welcome',compact('products'));
+    $favouritelist = Product::where('favourite' ,'=','1')
+    ->select('products.*','users.name as users_name')
+    ->leftJoin('users','products.user_id','=','users.id')
+    ->orderBy('id', 'DESC')->get();
+
+    $featured = Product::where('featured' ,'=','1')
+    ->select('products.*','users.name as users_name')
+    ->leftJoin('users','products.user_id','=','users.id')
+    ->orderBy('id', 'DESC')->first();
+
+    return view('welcome',compact('products','favouritelist','featured'));
 }
 
    
@@ -23,12 +33,42 @@ public function welcome()
     {
 
         $productdetail = Product::where('id',$id)->first();
+        $category =  $productdetail->category_id;
         $image = Product::get();
-        return view('frontendpage.detail',compact('productdetail','image'));
+        $favouritelist = Product::where('favourite' ,'=','1')
+        ->select('products.*','users.name as users_name')
+        ->leftJoin('users','products.user_id','=','users.id')
+        ->orderBy('id', 'DESC')->get();
+
+      $trandingbook = Product::where('tranding_list' ,'=','1')
+     ->select('products.*','product_categories.name as category_name')
+     ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+     ->orderBy('id', 'DESC')->get();
+
+     $similarbook = Product::where('category_id', 'LIKE', "%{$category}%")
+     ->select('products.*','users.name as users_name')
+     ->leftJoin('users','products.user_id','=','users.id')->get()
+     ;
+    //  dd($similarbook);
+
+        return view('frontendpage.detail',compact('productdetail','image','favouritelist','trandingbook','similarbook'));
     }
 
     public function category()
     {
-        return view('frontendpage.category');
+        $allcategory = Product::
+        select('products.*','product_categories.name as category_name')
+        ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+        ->get();
+
+        $trandingbook = Product::where('tranding_list' ,'=','1')
+     ->select('products.*','product_categories.name as category_name')
+     ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+     ->orderBy('id', 'DESC')->get();
+     $favouritelist = Product::where('favourite' ,'=','1')
+    ->select('products.*','users.name as users_name')
+    ->leftJoin('users','products.user_id','=','users.id')
+    ->orderBy('id', 'DESC')->get();
+        return view('frontendpage.category',compact('allcategory','trandingbook','favouritelist'));
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Auth;
 
 
 
@@ -33,7 +34,9 @@ class ProductController extends Controller
       */
 
     public function store(Request $request)
-    {     
+    { 
+        
+        $user = Auth::user();
         if (Product::where('title', $request->title)->exists()) {
             Session::flash('message', 'Already Exist!');
         }else{
@@ -58,12 +61,16 @@ class ProductController extends Controller
                $file->move($destinationPath,$fileName);
                $product->image = $fileName ;
            }
-
-           $product->category_id        = $request->category_id;
+           $product->user_id  = $user->id;
+           $product->category_id  = $request->category_id;
            $product->title        = $request->title;
            $product->description        = $request->description;
            $product->price        = $request->price;
            $product->status        = $request->status;
+           $product->tranding_list = $request->tranding_list	;
+           $product->featured    = $request->featured;
+           $product->favourite        = $request->favourite;
+
            $product->image = $fileName ;
            $product->save();
            Session::flash('message', 'Product Add Successfully!');

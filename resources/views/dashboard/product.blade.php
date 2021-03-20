@@ -71,6 +71,29 @@
                         <label for="ckeditor">Example textarea</label>
                       <textarea class="form-control" id="ckeditor" name="description" rows="4"></textarea>
                        </div>
+      <div class="form-check">
+     <input class="form-check-input" type="checkbox" name="tranding_list" value="1" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+    Tranding List
+     </label>
+     </div>
+
+     <div class="form-check">
+     <input class="form-check-input" type="checkbox" name="featured" value="1" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+       Featured
+     </label>
+     </div>
+
+     <div class="form-check">
+     <input class="form-check-input" type="checkbox" name="favourite" value="1" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+       Favourite List
+     </label>
+     </div>
+
+
+
                     <button type="submit" class="btn btn-primary mr-2" >Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>

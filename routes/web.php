@@ -45,5 +45,9 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 Route::get('/send-email', 'App\Http\Controllers\MailController@sendEmail');
 Route::get('/book_detail_page/{id?}', '\App\Http\Controllers\FrontendController@detail')->name('book.detail');
 Route::get('/book_category', '\App\Http\Controllers\FrontendController@category');
+Route::get('/checkout', '\App\Http\Controllers\CheckoutController@checkoutcreate');
+Route::get('/wishlist', '\App\Http\Controllers\WishlistController@wishlistcreate');
+
+
 
 

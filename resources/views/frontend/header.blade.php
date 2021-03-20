@@ -22,10 +22,10 @@
                         <ul id="dashboard" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
                            <li class="active"><a href="{{url('/')}}"><i class="las la-house-damage"></i>Home Page</a></li>
                            <li><a href="{{url('/book_category')}}"><i class="ri-function-line"></i>Category Page</a></li>
-                           <li><a href="{{url('/book_detail_page')}}"><i class="ri-book-line"></i>Book Page</a></li>
+                           <!-- <li><a href="{{url('/book_detail_page','id')}}"><i class="ri-book-line"></i>Book Page</a></li> -->
                            <li><a href="book-pdf.html"><i class="ri-file-pdf-line"></i>Book PDF</a></li>
-                           <li><a href="Checkout.html"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
-                          <li><a href="wishlist.html"><i class="ri-heart-line"></i>wishlist</a></li>
+                           <li><a href="{{url('/checkout')}}"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
+                          <li><a href="{{url('/wishlist')}}"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                      </li>
                    

@@ -77,7 +77,7 @@
                               <h4 class="card-title mb-0">Browse Books</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">                              
-                              <a href="category.html" class="btn btn-sm btn-primary view-more">View More</a>
+                              <a href="{{url('/book_category')}}" class="btn btn-sm btn-primary view-more">View More</a>
                            </div>
                         </div> 
                         <div class="iq-card-body">  
@@ -124,12 +124,11 @@
                               </div>
                              @endforeach
                              @endif
-                             
-
                            </div>
                         </div>
                      </div>
                   </div>
+                  @if(!empty($featured))
                   <div class="col-lg-6">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between mb-0">
@@ -154,11 +153,11 @@
                         <div class="iq-card-body">
                            <div class="row align-items-center">
                               <div class="col-sm-5 pr-0">
-                                 <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{asset('assets/images/page-img/featured-book.png')}}" alt=""></a>
+                                 <a href="javascript:void();"><img class="img-fluid rounded w-100" src="{{url('/images/' .$featured->image)}}" alt=""></a>
                               </div>
                               <div class="col-sm-7 mt-3 mt-sm-0">
-                                 <h4 class="mb-2">Casey Christie night book into find...</h4>
-                                 <p class="mb-2">Author: Gheg origin</p>
+                                 <h4 class="mb-2">{{$featured->title}}</h4>
+                                 <p class="mb-2">Author:{{$featured->users_name}}</p>
                                  <div class="mb-2 d-block">
                                     <span class="font-size-12 text-warning">
                                        <i class="fa fa-star"></i>
@@ -168,13 +167,14 @@
                                        <i class="fa fa-star"></i>
                                     </span>
                                  </div>
-                                 <span class="text-dark mb-3 d-block">Lorem Ipsum is simply dummy test in find a of the printing and typeset ing industry into end.</span>
+                                 <span class="text-dark mb-3 d-block">{!!$featured->description!!}</span>
                                  <button type="submit" class="btn btn-primary learn-more">Learn More</button>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
+                @endif
                   <div class="col-lg-6">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between mb-0">
@@ -317,21 +317,23 @@
                               <h4 class="card-title mb-0">Favorite Reads</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <a href="category.html" class="btn btn-sm btn-primary view-more">View More</a>
+                              <a href="{{url('/book_category')}}" class="btn btn-sm btn-primary view-more">View More</a>
                            </div>
                         </div>                         
                         <div class="iq-card-body favorites-contens">
                            <ul id="favorites-slider" class="list-inline p-0 mb-0 row">
+                              @if(!empty($favouritelist))
+                              @foreach($favouritelist as $favouritelists)
                               <li class="col-md-4">
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="{{asset('assets/images/favorite/01.jpg')}}" class="img-fluid rounded w-100" alt="">
+                                          <img src="{{url('/images/' .$favouritelists->image)}}" class="img-fluid rounded w-100" alt="">
                                        </a>                                
                                     </div>
                                     <div class="col-7">
-                                       <h5 class="mb-2">Every Book is a new Wonderful Travel..</h5>
-                                       <p class="mb-2">Author : Pedro Araez</p>                                          
+                                       <h5 class="mb-2">{{$favouritelists->title}}</h5>
+                                       <p class="mb-2">Author:{{$favouritelists->users_name}}</p>                                          
                                        <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
                                           <span>Reading</span>
                                           <span class="mr-4">78%</span>
@@ -345,75 +347,8 @@
                                     </div>
                                  </div>
                               </li>
-                              <li class="col-md-4">
-                                 <div class="d-flex align-items-center">
-                                    <div class="col-5 p-0 position-relative">
-                                       <a href="javascript:void();">
-                                          <img src="{{asset('assets/images/favorite/02.jpg')}}" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
-                                    </div>
-                                    <div class="col-7">
-                                       <h5 class="mb-2">Casey Christie night book into find...</h5>
-                                       <p class="mb-2">Author : Michael klock</p>                                          
-                                       <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
-                                          <span>Reading</span>
-                                          <span class="mr-4">78%</span>
-                                       </div>
-                                       <div class="iq-progress-bar-linear d-inline-block w-100">
-                                          <div class="iq-progress-bar iq-bg-danger">
-                                             <span class="bg-danger" data-percent="78"></span>
-                                          </div>
-                                       </div>
-                                       <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-4">
-                                 <div class="d-flex align-items-center">
-                                    <div class="col-5 p-0 position-relative">
-                                       <a href="javascript:void();">
-                                          <img src="{{asset('assets/images/favorite/03.jpg')}}" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
-                                    </div>
-                                    <div class="col-7">
-                                       <h5 class="mb-2">The Secret to English Busy People..</h5>
-                                       <p class="mb-2">Author : Daniel Ace</p>                                          
-                                       <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
-                                          <span>Reading</span>
-                                          <span class="mr-4">78%</span>
-                                       </div>
-                                       <div class="iq-progress-bar-linear d-inline-block w-100">
-                                          <div class="iq-progress-bar iq-bg-info">
-                                             <span class="bg-info" data-percent="78"></span>
-                                          </div>
-                                       </div>
-                                       <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-4">
-                                 <div class="d-flex align-items-center">
-                                    <div class="col-5 p-0 position-relative">
-                                       <a href="javascript:void();">
-                                          <img src="{{asset('assets/images/favorite/04.jpg')}}" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
-                                    </div>
-                                    <div class="col-7">
-                                       <h5 class="mb-2">The adventures of Robins books...</h5>
-                                       <p class="mb-2">Author : Luka Afton</p>                                          
-                                       <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
-                                          <span>Reading</span>
-                                          <span class="mr-4">78%</span>
-                                       </div>
-                                       <div class="iq-progress-bar-linear d-inline-block w-100">
-                                          <div class="iq-progress-bar iq-bg-success">
-                                             <span class="bg-success" data-percent="78"></span>
-                                          </div>
-                                       </div>
-                                       <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
+                              @endforeach
+                              @endif
                            </ul>
                         </div>
                      </div>
