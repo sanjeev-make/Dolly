@@ -83,16 +83,29 @@
                                        </div>
                                        <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">{!!$productdetail->description!!}</span>
                                        <div class="text-primary mb-4">Author: <span class="text-body">Jhone Steben</span></div>
-                                       <div class="mb-4 d-flex align-items-center">                                       
-                                          <a href="#" class="btn btn-primary view-more mr-2">Add To Cart</a>
+                                       <div class="mb-4 d-flex align-items-center">
+                                       <form action="{{url('/cart')}}" method="post">
+                                           @csrf
+                                       <input type="hidden" id="custId" name="title" value="{{$productdetail->title}}">
+                                       <input type="hidden" id="custId2" name="image" value="{{$productdetail->image}}">
+                                       <input type="hidden" id="custIda3" name="price" value="{{$productdetail->price}}">
+                                       <input type="hidden" id="custIda3" name="description" value="{{$productdetail->description}}">
+                                       <input type="hidden" id="custIda3" name="product_id" value="{{$productdetail->id}}">
+                                       <input type="hidden" id="custId4" name="quantity" value="1">
+                                       <input type="hidden" id="custId5" name="user_id" value="">
+                                       <input type="hidden" id="custId6" name="session_id" value="">
+                                       <button type="submit" class="btn btn-primary view-more mr-2">Add To Cart</button>
+                                        </form>
+                                          <!-- <a href="#" class="btn btn-primary view-more mr-2">Add To Cart</a> -->
                                           <a href="book-pdf.html" class="btn btn-primary view-more mr-2">Read Sample</a>
                                        </div>
+
                                        <div class="mb-3">
                                           <a href="#" class="text-body text-center"><span class="avatar-30 rounded-circle bg-primary d-inline-block mr-2"><i class="ri-heart-fill"></i></span><span>Add to Wishlist</span></a>
                                        </div>
-                                       <div class="iq-social d-flex align-items-center">
-                                          <h5 class="mr-2">Share:</h5>
-                                          <ul class="list-inline d-flex p-0 mb-0 align-items-center">
+                                       <div class="iq-social d-flex align-items-center" id="share">
+                                          <!-- <h5 class="mr-2">Share:</h5> -->
+                                          <!-- <ul class="list-inline d-flex p-0 mb-0 align-items-center">
                                              <li>
                                                 <a href="#" class="avatar-40 rounded-circle bg-primary mr-2 facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                              </li>
@@ -105,7 +118,7 @@
                                              <li >
                                                 <a href="#" class="avatar-40 rounded-circle bg-primary pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
                                              </li>
-                                          </ul>
+                                          </ul> -->
                                        </div>
                                     </div>
                                  </div>
@@ -296,5 +309,10 @@
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       @include('frontend.script')
 
+      <script>
+        $("#share").jsSocials({
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+    </script>
    </body>
 </html>

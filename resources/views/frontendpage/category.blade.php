@@ -22,83 +22,41 @@
                         <div class="d-block text-center">
                            <h2 class="mb-3">Search by Book Name</h2>    
                            <div class="w-100 iq-search-filter">
+                           <form action="{{url('/book_category')}}" class="searchbox" method="get">
                               <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
                                  <li class="search-menu-opt">
                                     <div class="iq-dropdown">
                                        <div class="form-group mb-0">
-                                          <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">
+                                          <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1" name="category_name">
                                              <option selected="">All</option>
-                                             <option>A Books</option>
-                                             <option>the Sun</option>
-                                             <option>Harsh book</option>
-                                             <option>People book</option>
-                                             <option>the Fog</option>
+                                             @foreach($categoryget as $categorygets)
+                                             <option value="{{$categorygets->category_name}}">{{$categorygets->category_name}}</option>
+                                            @endforeach
+                                            
+                                            
                                           </select>
                                        </div>
                                     </div>
-                                 </li>
-                                 <li class="search-menu-opt">
-                                    <div class="iq-dropdown">
-                                       <div class="form-group mb-0">
-                                          <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">
-                                             <option selected="">Genres</option>
-                                             <option>General</option>
-                                             <option>History</option>
-                                             <option>Horror</option>
-                                             <option>Fantasy</option>
-                                             <option>Literary</option>
-                                             <option>Manga</option>
-                                          </select>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <li class="search-menu-opt">
-                                    <div class="iq-dropdown">
-                                       <div class="form-group mb-0">
-                                          <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect3">
-                                             <option selected="">Year</option>
-                                             <option>2015</option>
-                                             <option>2016</option>
-                                             <option>2017</option>
-                                             <option>2018</option>
-                                             <option>2019</option>
-                                             <option>2020</option>
-                                          </select>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <li class="search-menu-opt">
-                                    <div class="iq-dropdown">
-                                       <div class="form-group mb-0">
-                                          <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">
-                                             <option selected="">Author</option>
-                                             <option>Milesiy Yor</option>
-                                             <option>Ira Membrit</option>
-                                             <option>Anna Mull</option>
-                                             <option>John Smith</option>
-                                             <option>David King</option>
-                                             <option>Kusti Franti</option>
-                                          </select>
-                                       </div>
-                                    </div>
-                                 </li>
+                                 </li>                        
                                  <li class="search-menu-opt">
                                     <div class="iq-search-bar search-book d-flex align-items-center">
-                                       <form action="#" class="searchbox">
-                                          <input type="text" class="text search-input" placeholder="search here...">
+                                       <!-- <form action="#" class="searchbox"> -->
+                                          <input type="text" class="text search-input" placeholder="search here..." name="title">
                                           <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                                       </form>
+                                       <!-- </form> -->
                                        <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
                                     </div>
                                  </li>
                               </ul>
+                              </form>
                            </div> 
                         </div>
                      </div>
                      <div class="iq-card">
                         <div class="iq-card-body">
                            <div class="row">
-                 @if(!empty($allcategory))
+                 @if($allcategory->count() > 0)
+                
                  @foreach($allcategory as $allcategories)
                               <div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent m-0 mb-sm-0 mb-md-0 mb-lg-0">
@@ -138,6 +96,8 @@
                                  </div>
                               </div>
                            @endforeach
+                           @else
+                           <p> Data not Found </p>
                             @endif
                         </div>
                         

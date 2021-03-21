@@ -48,6 +48,8 @@ Route::get('/book_category', '\App\Http\Controllers\FrontendController@category'
 Route::get('/checkout', '\App\Http\Controllers\CheckoutController@checkoutcreate');
 Route::get('/wishlist', '\App\Http\Controllers\WishlistController@wishlistcreate');
 
+Route::post('/cart/{id?}', '\App\Http\Controllers\CartController@addToCart');
+
 
 
 

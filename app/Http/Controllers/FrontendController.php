@@ -54,21 +54,41 @@ public function welcome()
         return view('frontendpage.detail',compact('productdetail','image','favouritelist','trandingbook','similarbook'));
     }
 
-    public function category()
+    public function category(Request $request)
     {
-        $allcategory = Product::
-        select('products.*','product_categories.name as category_name')
+// dd($request->all());
+      $title = $request->title;
+      $category = $request->category_name;
+
+        $allcategory = Product::select('products.*','product_categories.name as category_name')
         ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+
+        ->where('product_categories.name', 'LIKE', "%{$category}%")
+        ->where('title', 'LIKE', "%{$title}%")
         ->get();
+       
+        // if(!empty($query->category_id))
+        // {
+            
+        // }
+        // if(!empty($query->title)){
+        //     $query->where('title', 'LIKE', "%{$title}%")
+        // }
+              
+        // $allcategory = $query->get();
+
+         $categoryget = Product::
+        select('products.*','product_categories.name as category_name')
+        ->leftJoin('product_categories','products.category_id','=','product_categories.id')->get();
 
         $trandingbook = Product::where('tranding_list' ,'=','1')
-     ->select('products.*','product_categories.name as category_name')
-     ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+      ->select('products.*','product_categories.name as category_name')
+      ->leftJoin('product_categories','products.category_id','=','product_categories.id')
+      ->orderBy('id', 'DESC')->get();
+      $favouritelist = Product::where('favourite' ,'=','1')
+     ->select('products.*','users.name as users_name')
+     ->leftJoin('users','products.user_id','=','users.id')
      ->orderBy('id', 'DESC')->get();
-     $favouritelist = Product::where('favourite' ,'=','1')
-    ->select('products.*','users.name as users_name')
-    ->leftJoin('users','products.user_id','=','users.id')
-    ->orderBy('id', 'DESC')->get();
-        return view('frontendpage.category',compact('allcategory','trandingbook','favouritelist'));
+        return view('frontendpage.category',compact('allcategory','trandingbook','favouritelist','categoryget'));
     }
 }

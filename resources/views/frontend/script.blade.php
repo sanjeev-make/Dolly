@@ -51,3 +51,6 @@
       <script src="{{asset('assets/js/chart-custom.js')}}"></script>
       <!-- Custom JavaScript -->
       <script src="{{asset('assets/js/custom.js')}}"></script>
+
+      <script src="{{asset('assets/jssocials-1.4.0/jquery.js')}}"></script>
+    <script src="{{asset('assets/jssocials-1.4.0/jssocials.min.js')}}"></script>

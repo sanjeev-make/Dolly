@@ -15,4 +15,8 @@
       <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+
+      <link rel="stylesheet" type="text/css" href="{{asset('assets/jssocials-1.4.0/font-awesome.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/jssocials-1.4.0/jssocials.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/jssocials-1.4.0/jssocials-theme-flat.css')}}"/>
    </head>

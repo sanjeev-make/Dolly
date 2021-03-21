@@ -30,19 +30,22 @@
                               </div>
                               <div class="iq-card-body">
                                  <ul class="list-inline p-0 m-0">
+                                    
+                                  @if(!empty($cart))
+                                  @foreach($cart as $carts)
                                     <li class="checkout-product">
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="{{asset('assets/images/checkout/01.jpg')}}" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="{{asset('/images/'.$carts->image)}}" alt=""></a>
                                              </span>
                                           </div>
                                           <div class="col-sm-4">
                                              <div class="checkout-product-details">
-                                                <h5>The Raze night book</h5>
+                                                <h5>{{$carts->title}}</h5>
                                                 <p class="text-success">In stock</p>
                                                 <div class="price">
-                                                   <h5>$180.00</h5>
+                                                   <h5>${{$carts->price}}</h5>
                                                 </div>
                                              </div>
                                           </div>
@@ -51,83 +54,12 @@
                                                 <div class="col-sm-10">
                                                    <div class="row align-items-center mt-2">
                                                       <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                      </div>
-                                                      <div class="col-sm-5 col-md-6">
-                                                         <span class="product-price">$180.00</span>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                   <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li class="checkout-product">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="{{asset('assets/images/checkout/02.jpg')}}" alt=""></a>
-                                             </span>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <div class="checkout-product-details">
-                                                <h5>Harsh Reality book</h5>
-                                                <p class="text-success">In stock</p>
-                                                <div class="price">
-                                                   <h5>$250.00</h5>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                             <div class="row">
-                                                <div class="col-sm-10">
-                                                   <div class="row align-items-center mt-2">
-                                                      <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                      </div>
-                                                      <div class="col-sm-5 col-md-6">
-                                                         <span class="product-price">$250.00</span>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                   <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li class="checkout-product">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="{{asset('assets/images/checkout/03.jpg')}}" alt=""></a>
-                                             </span>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <div class="checkout-product-details">
-                                                <h5>The House in the Fog</h5>
-                                                <p class="text-success">In stock</p>
-                                                <div class="price">
-                                                   <h5>$399.00</h5>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                             <div class="row">
-                                                <div class="col-sm-10">
-                                                   <div class="row align-items-center mt-2">
-                                                      <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
+                                                      <form action="{{url('/checkout')}}" method="get">
+                                                          @csrf
+                                                         <button type="submit" class="fa fa-minus qty-btn" id="btn-minus" name="quantity"></button>
+                                                         <input type="text" id="quantity" value="{{$carts->quantity}}">
+                                                         <button type="submit" class="fa fa-plus qty-btn" id="btn-plus" name="quantity"></button>
+                                                         </form>
                                                       </div>
                                                       <div class="col-sm-5 col-md-6">
                                                          <span class="product-price">$399.00</span>
@@ -141,6 +73,9 @@
                                           </div>
                                        </div>
                                     </li>
+                        @endforeach
+                       @endif 
+
                                  </ul>
                               </div>
                            </div>
